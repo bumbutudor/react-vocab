@@ -1,25 +1,41 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Button, Input } from 'semantic-ui-react'
 
 class App extends Component {
+  state={
+    word: '',
+    wordList: []
+  }
+
+  handleWordChange = e => {
+    this.setState({
+      word: e.target.value
+    })
+  }
+
+  handleAddWord = () => {
+    this.setState({
+      wordList: [...this.state.wordList, this.state.word],
+      word: ''
+    })
+  }
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <Input 
+          placeholder="Add new word"
+          onChange={this.handleWordChange}
+          value={this.state.word}
+        />
+        <Button
+          onClick={this.handleAddWord}
+        >
+        Add to list
+        </Button>
+        {this.state.wordList.map((word, i) => {
+          return <li key={i}>{word}</li>
+        })}
       </div>
     );
   }
