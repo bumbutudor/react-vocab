@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Container, Grid } from 'semantic-ui-react'
+import Header from './components/Header'
 import WordList from './components/WordList';
 import WordInput from './components/WordInput';
 import './App.css'
@@ -44,10 +45,18 @@ class App extends Component {
     })
   }
 
+  handleRemoveWord = (index) => {
+    const words = this.state.wordList.filter((word, wordIndex) => {
+      return wordIndex !== index
+    })
+    this.setState({ wordList: words })
+  }
+
   render() {
     return (
       <Container id="app">
-        <Grid>
+        <Grid centered>
+          <Header />
           <Grid.Row centered>
             <WordInput
               handleAddWord={this.state.word && this.state.definition ? this.handleAddWord : null}
@@ -62,6 +71,7 @@ class App extends Component {
           <Grid.Row centered>
             <WordList 
               wordList={this.state.wordList}
+              removeWord={this.handleRemoveWord}
             />
           </Grid.Row>
         </Grid>

@@ -1,17 +1,5 @@
-#root {
-  background-image: url('https://images.unsplash.com/photo-1543165796-5426273eaab3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60');
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 1000px;
-}
-
 #app {
-  padding-top: 50px
-}
-
-#wordList {
-  background: black;
-  opacity: 0.5
+  padding-top: 50px;
 }
 
 #button {
@@ -23,6 +11,19 @@
   background: #D6F03E;
 }
 
+#root {
+  background: #2980B9;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #FFFFFF, #6DD5FA, #2980B9);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #FFFFFF, #6DD5FA, #2980B9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */  
+  height: 1000px;
+}
+
+#wordList {
+  background: black;
+  opacity: 0.5;
+}
+
 #words {
   background: blue
 }
+
