@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Container, Grid } from 'semantic-ui-react'
 import WordList from './components/WordList';
 import WordInput from './components/WordInput';
+import './App.css'
 
 class App extends Component {
 
@@ -45,11 +46,11 @@ class App extends Component {
 
   render() {
     return (
-      <Container>
+      <Container id="app">
         <Grid>
           <Grid.Row centered>
             <WordInput
-              handleAddWord={this.handleAddWord}
+              handleAddWord={this.state.word && this.state.definition ? this.handleAddWord : null}
               handleWordChange={this.handleWordChange}
               handleUrlChange={this.handleUrlChange}
               handleDefinitionChange={this.handleDefinitionChange}

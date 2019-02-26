@@ -1,12 +1,12 @@
 import React from 'react'
-import { List } from 'semantic-ui-react'
+import { Button, List } from 'semantic-ui-react'
 import WordModal from './WordModal';
 
 const WordList = props => {
   return (
     <List animated verticalAlign="middle">
     {props.wordList.map((word, i) => {
-      return <List.Item key={i} >
+      return <List.Item key={i}>
               <List.Content>
                 <List.Header>
                   <WordModal 
