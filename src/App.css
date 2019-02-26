@@ -3,7 +3,7 @@
 }
 
 #button {
-  border-radius: 10%;
+  border-radius: 5%;
   transition: all 300ms ease-in-out;
 }
 
@@ -25,5 +25,9 @@
 
 #words {
   background: blue
+}
+
+#wordButton {
+  width: 200px;
 }
 

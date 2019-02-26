@@ -11,17 +11,17 @@ export default class WordList extends Component {
         return <List.Item key={i}>
                 <List.Content>
                   <List.Header>
-                    <Button animated secondary onClick={(e) => { this.props.removeWord(i)}} key={word} >
+                  <WordModal 
+                      text={word.word}
+                      url={word.url}
+                      definition={word.definition}
+                    />
+                    <Button animated color="red" onClick={(e) => { this.props.removeWord(i)}} key={word} >
                     <Button.Content visible>X</Button.Content>
                       <Button.Content hidden>
                         <Icon name='trash alternate outline' />
                       </Button.Content>
                     </Button>
-                    <WordModal 
-                      text={word.word}
-                      url={word.url}
-                      definition={word.definition}
-                    />
                   </List.Header>
                 </List.Content>
                </List.Item>
