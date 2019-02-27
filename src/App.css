@@ -3,7 +3,6 @@
 }
 
 #button {
-  border-radius: 5%;
   transition: all 300ms ease-in-out;
 }
 
@@ -29,5 +28,9 @@
 
 #wordButton {
   width: 200px;
+}
+
+.ui.grid>.row>.column {
+  margin-top: 10px;
 }
 
