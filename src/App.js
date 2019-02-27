@@ -12,7 +12,8 @@ class App extends Component {
     word: '',
     definition: '',
     url: '',
-    wordList: []
+    wordList: [],
+    error: ''
   }
 
   handleChange = e => {
@@ -30,7 +31,8 @@ class App extends Component {
       wordList: [...this.state.wordList, {word: word, definition: definition, url: url }],
       word: '',
       definition: '',
-      url: ''
+      url: '',
+      error: ''
     })
   }
 
@@ -41,6 +43,10 @@ class App extends Component {
     this.setState({ wordList: words })
   }
 
+  handleError = () => {
+    this.setState({ error: "Please enter a word and definition" })
+  }
+
   render() {
     return (
       <Container id="app">
@@ -49,14 +55,15 @@ class App extends Component {
           <PageHeader />
           <Grid.Row centered>
             <WordInput
-              handleAddWord={this.state.word && this.state.definition ? this.handleAddWord : null}
+              handleAddWord={this.state.word && this.state.definition ? this.handleAddWord : this.handleError}
               handleChange={this.handleChange}
               wordValue={this.state.word}
               definitionValue={this.state.definition}
               urlValue={this.state.url}
             />
           </Grid.Row>
-          <Grid centered container columns={4} stackable>
+          <Grid.Row><p> {this.state.error}</p></Grid.Row>
+          <Grid centered container columns={4} stackable style={{width: 200}}>
             <WordList 
               wordList={this.state.wordList}
               removeWord={this.handleRemoveWord}

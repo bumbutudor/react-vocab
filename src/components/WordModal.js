@@ -3,8 +3,8 @@ import { Button, Header, Image, Modal } from 'semantic-ui-react'
 
 const WordModal = props => (
   <Modal trigger={
-    <Button id="wordButton" animated primary >
-    <Button.Content visible>{props.text}</Button.Content>
+    <Button id="wordButton" animated secondary >
+    <Button.Content visible id="buttonText">{props.text}</Button.Content>
       <Button.Content hidden>
         Study me!
       </Button.Content>
@@ -14,7 +14,7 @@ const WordModal = props => (
     <Modal.Content image>
       <Image wrapped size="medium" src={props.url} />
       <Modal.Description>
-        <Header>{props.text}</Header>
+        <Header maxLength='11'>{props.text}</Header>
         <p>{props.definition}</p>
       </Modal.Description>
     </Modal.Content>

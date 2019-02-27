@@ -14,8 +14,8 @@ export default class WordList extends Component {
                       url={word.url}
                       definition={word.definition}
                     />
-                    <Button circular animated color="red" onClick={(e) => { this.props.removeWord(i)}} key={word} >
-                    <Button.Content visible>X</Button.Content>
+                    <Button style={style} circular animated color="red" onClick={(e) => { this.props.removeWord(i)}} key={word} >
+                    <Button.Content visible >X</Button.Content>
                       <Button.Content hidden>
                         <Icon name='trash alternate outline' />
                       </Button.Content>
@@ -29,6 +29,6 @@ export default class WordList extends Component {
 
   const style={
     textAlign: 'center',
-    marginTop: 20
+    margin: 5
   }
 
