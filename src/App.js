@@ -4,6 +4,7 @@ import SimpleStorage from 'react-simple-storage';
 import PageHeader from './components/PageHeader'
 import WordList from './components/WordList';
 import WordInput from './components/WordInput';
+import WordOfTheDay from './components/WordOfTheDay'
 import './App.css'
 
 class App extends Component {
@@ -53,6 +54,9 @@ class App extends Component {
         <SimpleStorage parent={this} />
         <Grid centered>
           <PageHeader />
+          <Grid.Row>
+            <WordOfTheDay />
+          </Grid.Row>
           <Grid.Row centered>
             <WordInput
               handleAddWord={this.state.word && this.state.definition ? this.handleAddWord : this.handleError}
