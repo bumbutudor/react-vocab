@@ -15,10 +15,10 @@ export default class WordList extends Component {
                       definition={word.definition}
                     />
                     <Button style={style} circular animated color="red" onClick={(e) => { this.props.removeWord(i)}} key={word} >
-                    <Button.Content visible >X</Button.Content>
-                      <Button.Content hidden>
-                        <Icon name='trash alternate outline' />
-                      </Button.Content>
+                      <Button.Content visible >Delete</Button.Content>
+                        <Button.Content hidden>
+                          <Icon name='trash alternate outline' />
+                        </Button.Content>
                     </Button>
                </Grid.Column>
       })}
