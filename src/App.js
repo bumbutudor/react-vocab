@@ -5,6 +5,7 @@ import JokeOfTheDay from './components/JokeOfTheDay';
 import PageHeader from './components/PageHeader';
 import WordList from './components/WordList';
 import WordInput from './components/WordInput';
+import WordOfTheDay from './components/WordOfTheDay'
 import './App.css'
 
 class App extends Component {
@@ -20,7 +21,7 @@ class App extends Component {
       error: null,
       isLoaded: false
     };
-  }
+
   
 
   handleChange = e => {
@@ -84,10 +85,14 @@ class App extends Component {
         <Grid centered>
           <PageHeader />
           <Grid.Row>
+<<<<<<< HEAD
           <JokeOfTheDay 
             joke={this.state.joke.setup}
             punchline={this.state.joke.punchline}
           />
+=======
+            <WordOfTheDay />
+>>>>>>> f04705a4bdfc7eab37a52ea699a5313bdbb73f8c
           </Grid.Row>
           <Grid.Row centered>
             <WordInput
