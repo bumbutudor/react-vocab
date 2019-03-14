@@ -5,8 +5,7 @@ import JokeOfTheDay from './components/JokeOfTheDay';
 import PageHeader from './components/PageHeader';
 import WordList from './components/WordList';
 import WordInput from './components/WordInput';
-import WordOfTheDay from './components/WordOfTheDay'
-import './App.css'
+import './App.css';
 
 class App extends Component {
   constructor(props) {
@@ -21,7 +20,7 @@ class App extends Component {
       error: null,
       isLoaded: false
     };
-
+  }
   
 
   handleChange = e => {
@@ -56,7 +55,8 @@ class App extends Component {
     this.setState({ error: 'Please enter a word and definition' })
   }
 
-  componentDidMount() {
+  
+  componentDidMount(){
     fetch("https://official-joke-api.appspot.com/jokes/random")
       .then(res => res.json())
       .then(
@@ -85,14 +85,10 @@ class App extends Component {
         <Grid centered>
           <PageHeader />
           <Grid.Row>
-<<<<<<< HEAD
           <JokeOfTheDay 
             joke={this.state.joke.setup}
             punchline={this.state.joke.punchline}
           />
-=======
-            <WordOfTheDay />
->>>>>>> f04705a4bdfc7eab37a52ea699a5313bdbb73f8c
           </Grid.Row>
           <Grid.Row centered>
             <WordInput
