@@ -1,20 +1,27 @@
 import React, { Component } from 'react';
-import { Container, Grid } from 'semantic-ui-react'
+import { Container, Grid } from 'semantic-ui-react';
 import SimpleStorage from 'react-simple-storage';
-import PageHeader from './components/PageHeader'
+import JokeOfTheDay from './components/JokeOfTheDay';
+import PageHeader from './components/PageHeader';
 import WordList from './components/WordList';
 import WordInput from './components/WordInput';
 import './App.css'
 
 class App extends Component {
-
-  state={
-    word: '',
-    definition: '',
-    url: '',
-    wordList: [],
-    error: ''
+  constructor(props) {
+    super(props);
+    this.state={
+      word: '',
+      definition: '',
+      url: '',
+      wordList: [],
+      joke: [],
+      errorMsg: '',
+      error: null,
+      isLoaded: false
+    };
   }
+  
 
   handleChange = e => {
     this.setState({
@@ -32,7 +39,8 @@ class App extends Component {
       word: '',
       definition: '',
       url: '',
-      error: ''
+      errorMsg: '',
+      isLoaded: false
     })
   }
 
@@ -44,7 +52,29 @@ class App extends Component {
   }
 
   handleError = () => {
-    this.setState({ error: "Please enter a word and definition" })
+    this.setState({ error: 'Please enter a word and definition' })
+  }
+
+  componentDidMount() {
+    fetch("https://official-joke-api.appspot.com/jokes/random")
+      .then(res => res.json())
+      .then(
+        (result) => {
+          this.setState({
+            isLoaded: true,
+            joke: result
+          });
+        },
+        // Note: it's important to handle errors here
+        // instead of a catch() block so that we don't swallow
+        // exceptions from actual bugs in components.
+        (error) => {
+          this.setState({
+            isLoaded: true,
+            error
+          });
+        }
+      )
   }
 
   render() {
@@ -53,6 +83,12 @@ class App extends Component {
         <SimpleStorage parent={this} />
         <Grid centered>
           <PageHeader />
+          <Grid.Row>
+          <JokeOfTheDay 
+            joke={this.state.joke.setup}
+            punchline={this.state.joke.punchline}
+          />
+          </Grid.Row>
           <Grid.Row centered>
             <WordInput
               handleAddWord={this.state.word && this.state.definition ? this.handleAddWord : this.handleError}
@@ -62,7 +98,7 @@ class App extends Component {
               urlValue={this.state.url}
             />
           </Grid.Row>
-          <Grid.Row><p> {this.state.error}</p></Grid.Row>
+          {this.state.errorMsg && <p>{this.state.error}</p>}
           <Grid centered container columns={4} stackable style={{width: 200}}>
             <WordList 
               wordList={this.state.wordList}
