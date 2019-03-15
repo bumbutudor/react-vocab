@@ -1,7 +1,11 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Button, Header, Modal } from 'semantic-ui-react'
 
-const JokeOfTheDay = props => (
+const JokeOfTheDay = props => {
+
+    const [display, setDisplay] = useState(false);
+
+    return (
             <div>
                 <Modal trigger={
                     <Button id="wordButton" animated secondary >
@@ -16,11 +20,13 @@ const JokeOfTheDay = props => (
                     {/* <Image wrapped size="medium" src={props.url} /> */}
                     <Modal.Description>
                         <Header maxLength='11'>{props.joke}</Header>
-                        <p>{props.punchline}</p>
+                        {display && <p>{props.punchline}</p>}
+                        {!display && <Button onClick={() => setDisplay(true)}>Show Punchline</Button>}
                     </Modal.Description>
                     </Modal.Content>
                 </Modal>
             </div>
         )
+    }
 
 export default JokeOfTheDay
